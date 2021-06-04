@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta2 
+kind: Deployment 
+metadata: 
+name: math_api 
+labels: 
+name: math_api 
+spec: 
+replicas: 1 
+selector: 
+matchLabels: 
+name: math_api 
+template: 
+metadata: 
+name: math_api 
+labels: 
+name: math_api 
+spec: 
+containers: 
+- name: math_api 
+image: gcr.io/<GCP_PROJECT_ID>/math_web_service_api 1 
+ports: 
+- containerPort: 5000 
+resources: 
+requests: 
+memory: 256Mi 
+limits: 
+memory: 512Mi 
+env: 
+- name: DEBUG_MODE 
+value: "1"
